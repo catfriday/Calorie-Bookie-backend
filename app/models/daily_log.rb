@@ -5,4 +5,7 @@ class DailyLog < ApplicationRecord
     has_many :food_items, through: :food_entries
 
     validates :day_number, presence: true
+
+
+    
 end
