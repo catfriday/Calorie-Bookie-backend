@@ -18,7 +18,7 @@ class User < ApplicationRecord
     #     end
     #  end
 
-     def per_day(day_number)
+     def log_per_day(day_number)
         array = self.daily_logs.select do |log|
             log.day_number == day_number
         end

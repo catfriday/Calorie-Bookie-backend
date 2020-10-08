@@ -20,7 +20,7 @@ class Api::V1::UsersController < ApplicationController
 
   def index
     users = User.all
-    render json: users, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}]}], methods: [:per_day, :calories_per_day]
+    render json: users, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}]}], methods: [:log_per_day, :calories_per_day]
   end
 
   def show 
