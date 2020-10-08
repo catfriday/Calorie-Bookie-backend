@@ -4,10 +4,10 @@ class Api::V1::AuthController < ApplicationController
 # login
 def login
     # byebug
-    user = User.find_by(username: params[:username])
+    user = User.find_by(email: params[:email])
 
     if user && user.authenticate(params[:password]) #.authenticate method to check password using bcrypt gem
-        render json: {username: user.username, token: encode_token({user_id: user.id})} #, status: 200
+        render json: {email: user.email, token: encode_token({user_id: user.id})} #, status: 200
     else
         render json: {error: "invalid username or password"}
     end
