@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
 
-    skip_before_action :authorized, only: [:create]
+    # skip_before_action :authorized, only: [:create]
  
   def profile
     render json: current_user, status: :accepted
@@ -20,12 +20,13 @@ class Api::V1::UsersController < ApplicationController
 
   def index
     users = User.all
-    render json: users, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}]}], methods: [:log_per_day, :calories_per_day]
+    
+    render json: users, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories]}]
   end
 
   def show 
     user = User.find_by(id: params[:id])
-    render json: user, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}]}]
+    render json: user, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories]}]
 
     # render json: teachers, include: [:students => {include: [:student_assignments => {include: [:assignment]}]}]
   end

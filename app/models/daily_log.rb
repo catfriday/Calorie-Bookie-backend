@@ -6,6 +6,10 @@ class DailyLog < ApplicationRecord
 
     validates :day_number, presence: true
 
-
-    
+    def calories
+      total =  self.food_items.map do |item|
+            item.calories
+        end
+        total.sum
+    end
 end

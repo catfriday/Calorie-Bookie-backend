@@ -2,12 +2,12 @@ class Api::V1::DailyLogsController < ApplicationController
 
     def index
         daily_logs = DailyLog.all
-        render json: daily_logs, only: [:id, :user_id, :date, :day_number]
+        render json: daily_logs, only: [:id, :user_id, :date, :day_number], methods: [:calories]
     end
 
     def show
         daily_log = DailyLog.find_by(id: params[:id])
-        render json: daily_log, except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}]
+        render json: daily_log, except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories]
 
         # [:food_items => {except: [:created_at, :updated_at]}]
     end
@@ -20,19 +20,23 @@ class Api::V1::DailyLogsController < ApplicationController
 
     def update
         daily_log = DailyLog.find_by(id: params[:id])
-        # byebug
         daily_log.update(daily_log_params)
-        render json: daily_log, except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}]
+        render json: daily_log, except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories]
     end
 
-    def food_entry
-        byebug
-       daily_log = DailyLog.find_by_or_create_by(user_id: params[:user_id], date: params[:date], day_number: params[:day_number])
+    def enter_food
+       daily_log = DailyLog.find_by(id: params[:id])
        daily_log.food_items << FoodItem.find_or_create_by(category: params[:category], food_name: params[:food_name], calories: params[:calories], serving_qty: params[:serving_qty], serving_unit: params[:serving_unit])
-       render json: daily_log, except: [:created_at, :updated_at], include: [:food_items]
-       #^^^^might need to go in seperate controller
-       
+       render json: daily_log, except: [:created_at, :updated_at], include: [:food_items] , methods: [:calories]
+       #^^^^might need to go in seperate controller 
     end
+
+    def destroy
+        daily_log = DailyLog.find_by(id: params[:id])
+        daily_log.destroy
+        render json: "FoodEntry Has been Destroyed"
+    end
+       
 
     private
 

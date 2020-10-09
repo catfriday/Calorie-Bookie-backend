@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :users, :daily_logs, :food_entries, :food_items, :bets 
       post '/login', to: 'auth#login'
       get '/profile', to: 'users#profile'
+      post '/enter_food', to: 'daily_logs#enter_food'
     end
   end
 end
