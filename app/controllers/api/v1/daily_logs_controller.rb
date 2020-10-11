@@ -13,9 +13,9 @@ class Api::V1::DailyLogsController < ApplicationController
     end
 
     def create 
-        daily_log = DailyLog.new(daily_log_params)
+        daily_log = DailyLog.find_or_create_by(daily_log_params)
         daily_log.save
-        render json: daily_log
+        render json: daily_log, except: [:created_at, :updated_at]
     end
 
     def update
