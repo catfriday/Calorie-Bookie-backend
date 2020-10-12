@@ -12,4 +12,22 @@ class DailyLog < ApplicationRecord
         end
         total.sum
     end
+
+    def thirty(user_id)
+        now = Date.today()
+        end_date = Date.today() + 30
+        dates = (now...end_date).to_a
+        dates.each do |date|
+            DailyLog.create(user_id: user_id, date: date, day_number: 'day 1')
+        end
+
+    end
+
 end
+
+# 30.days.from_now
+
+# start_date = Date.parse('date start')
+# end_date = Date.parse('date end')
+# (start..endd).to_a
+# Date.today() + 30
