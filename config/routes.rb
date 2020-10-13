@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#login'
       get '/profile', to: 'users#profile'
       post '/enter_food', to: 'daily_logs#enter_food'
+      post 'create_thirty', to: 'daily_logs#create_thirty'
     end
   end
 end
