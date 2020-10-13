@@ -13,9 +13,11 @@ class Api::V1::DailyLogsController < ApplicationController
     end
 
     def create 
+        # user = User.find_by(user_id: params[:id])
+        # user.thirty
         daily_log = DailyLog.find_or_create_by(daily_log_params)
         daily_log.save
-        render json: daily_log, except: [:created_at, :updated_at]
+        render json: daily_log, except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories]
     end
 
     def update
