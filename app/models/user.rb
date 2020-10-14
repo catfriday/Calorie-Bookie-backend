@@ -52,6 +52,10 @@ class User < ApplicationRecord
         # end
      end
 
-    
+
+    def calories_goal(calories)
+       goal= calories
+    end
+
     #  5.times { |i| puts i }
 end

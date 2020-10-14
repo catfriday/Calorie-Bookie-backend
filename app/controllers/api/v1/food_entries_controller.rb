@@ -16,10 +16,11 @@ class Api::V1::FoodEntriesController < ApplicationController
         render json: food_entry
     end
 
-   def destroy
-    food_entry = FoodEntry.find_by(id: params[:id])
-    food_entry.destroy
-    render json: "FoodEntry Has been Destroyed"
-end
+   def delete
+        
+        food_entry = FoodEntry.find_by(food_item_id: params[:food_item_id], daily_log_id: params[:daily_log_id])
+        food_entry.destroy
+        render json: "FoodEntry Has been Destroyed"
+    end
    
 end

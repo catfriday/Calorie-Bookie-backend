@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       get '/profile', to: 'users#profile'
       post '/enter_food', to: 'daily_logs#enter_food'
       post 'create_thirty', to: 'daily_logs#create_thirty'
+      post 'daily_calories_goal', to: "users#daily_calories_goal"
+      post 'delete', to: 'food_entries#delete'
     end
   end
 end

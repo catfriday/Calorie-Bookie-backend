@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
 
-    # skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:create]
  
   def profile
     render json: current_user, status: :accepted
@@ -37,6 +37,15 @@ class Api::V1::UsersController < ApplicationController
     user.update(user_params)
     render json: user, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}]}]
 end
+
+  def daily_calories_goal
+    user = User.find_by(id: params[:id])
+    user.calories_goal(calories: params[:calories])
+  end
+
+  def show_daily_calories_goal
+
+  end
 
 
   private
