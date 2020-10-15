@@ -57,5 +57,11 @@ class User < ApplicationRecord
        goal= calories
     end
 
+    def progress
+        self.daily_logs.each do |log|
+            log.
+        end
+    end
+
     #  5.times { |i| puts i }
 end

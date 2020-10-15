@@ -13,20 +13,21 @@ class DailyLog < ApplicationRecord
         total.sum
     end
 
-    # def thirty(user_id)
-    #     now = Date.today
-    #     end_date = Date.today + 30
-    #     dates = (now...end_date).to_a
-    #     i = 1  
-    #     dates.each do |date|
+    def daily_goal_reached
+        user = self.user 
+        if self.calories == 0
+            return "no entry"
+
+        elsif user.calories <= self.calories
+            return "no"
             
-    #         self.create(user_id: user_id, date: date, day_number: "day #{i}")
-    #         i ++ 
 
-    #     end
+        elsif user.calories > self.calories
+            return "yes"
+         end
+    end
 
-    # end
-
+    
 end
 
 # 30.days.from_now

@@ -21,12 +21,12 @@ class Api::V1::UsersController < ApplicationController
   def index
     users = User.all
     
-    render json: users, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories]}]
+    render json: users, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories, :daily_goal_reached]}]
   end
 
   def show 
     user = User.find_by(id: params[:id])
-    render json: user, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories]}]
+    render json: user, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories, :daily_goal_reached]}]
 
     # render json: teachers, include: [:students => {include: [:student_assignments => {include: [:assignment]}]}]
   end
