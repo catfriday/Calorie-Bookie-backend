@@ -58,9 +58,18 @@ class User < ApplicationRecord
     end
 
     def progress
-        self.daily_logs.each do |log|
-            log.
+      entries = self.daily_logs.select do |log|
+            log.daily_goal_reached == 'no'
         end
+
+
+     
+    end
+
+    def logged
+        self.daily_logs.map do |log|
+            log.food_items != 0
+        end 
     end
 
     #  5.times { |i| puts i }

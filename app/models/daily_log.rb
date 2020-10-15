@@ -13,21 +13,26 @@ class DailyLog < ApplicationRecord
         total.sum
     end
 
+    
+
+
     def daily_goal_reached
         user = self.user 
         if self.calories == 0
             return "no entry"
+        elsif
+            user.calories == nil
+            return "calorie goal not set yet"
 
         elsif user.calories <= self.calories
             return "no"
             
-
         elsif user.calories > self.calories
             return "yes"
          end
     end
 
-    
+
 end
 
 # 30.days.from_now
