@@ -50,7 +50,7 @@ end
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :weight, :bank, :image, :city)
+    params.require(:user).permit(:name, :email, :password, :weight, :bank, :image, :city, :calories)
   end
 
 end

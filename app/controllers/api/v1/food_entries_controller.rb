@@ -17,10 +17,10 @@ class Api::V1::FoodEntriesController < ApplicationController
     end
 
    def delete
-        
+        daily_log = DailyLog.find_by(id: params[:daily_log_id])
         food_entry = FoodEntry.find_by(food_item_id: params[:food_item_id], daily_log_id: params[:daily_log_id])
         food_entry.destroy
-        render json: "FoodEntry Has been Destroyed"
+        render json: daily_log, except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories]
     end
    
 end
