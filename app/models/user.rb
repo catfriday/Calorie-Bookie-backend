@@ -57,20 +57,26 @@ class User < ApplicationRecord
        goal= calories
     end
 
-    def progress
-      entries = self.daily_logs.select do |log|
-            log.daily_goal_reached == 'no'
-        end
+    # def progress
+    #   entries = self.daily_logs.select do |log|
+    #         log.daily_goal_reached == 'no'
+    #     end
 
-
-     
-    end
+    # end
 
     def logged
-        self.daily_logs.map do |log|
-            log.food_items != 0
+     logs = self.daily_logs.select do |log|
+            log.daily_goal_reached != 'no entry'
         end 
+      yes = logs.select do |l|
+        l.daily_goal_reached != 'no'
+      end
+      yes.length/logs.length.to_f
     end
 
     #  5.times { |i| puts i }
 end
+
+# it = logs.select do |log|
+#         log.daily_goal_reached != 'no'
+#        end
