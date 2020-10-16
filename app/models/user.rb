@@ -74,7 +74,12 @@ class User < ApplicationRecord
       yes.length/logs.length.to_f
     end
 
-    #  5.times { |i| puts i }
+    def entries_percentage
+      logs =  self.daily_logs.select  do |log|
+            log.food_entries.length != 0
+        end
+        logs.length/30.to_f
+    end
 end
 
 # it = logs.select do |log|
