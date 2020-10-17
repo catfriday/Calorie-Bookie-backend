@@ -12,7 +12,8 @@ class Api::V1::UsersController < ApplicationController
     
     if user.valid?
       user.save
-      render json: {user: user, id: user.id, name: user.name, token: encode_token({user_id: user.id})}, status: :created
+      render json: { bet: user.bets, monthly_progress: user.logged, daily_logs: user.daily_logs, email: user.email, id: user.id, name: user.name, weight: user.weight, bank: user.bank, image: user.image, city: user.city, calories: user.calories, 
+            token: encode_token({user_id: user.id})} #, status: 200
     else
       render json: {error: "Failed to create a user"}, status: :not_acceptable
     end
@@ -26,7 +27,7 @@ class Api::V1::UsersController < ApplicationController
 
   def show 
     user = User.find_by(id: params[:id])
-    render json: user, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories, :daily_goal_reached]}]
+    render json: user, methods:[:logged], except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories, :daily_goal_reached]}]
 
     # render json: teachers, include: [:students => {include: [:student_assignments => {include: [:assignment]}]}]
   end
