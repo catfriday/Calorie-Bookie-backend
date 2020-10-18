@@ -18,12 +18,17 @@ class User < ApplicationRecord
     #     end
     #  end
 
-    #  def log_per_day(day_number)
-    #     array = self.daily_logs.select do |log|
-    #         log.day_number == day_number
-    #     end
-    #     array.first.food_items
-    #  end
+     def todays_calories
+       array = self.daily_logs.select do |log|
+            log.date == Date.today
+      end
+       if array
+        return array[0].calories
+          else return "not today's date"
+       end
+        
+    
+     end
 
     #  def calories_per_day(day_number)
     #     array = self.daily_logs.select do |log|
