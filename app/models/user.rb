@@ -19,15 +19,16 @@ class User < ApplicationRecord
     #  end
 
      def todays_calories
-       array = self.daily_logs.select do |log|
-            log.date == Date.today
+       array = self.daily_logs.map do |log|
+           if log.date == Date.today
+            return log.calories 
+           else "no log for today's date"
+           end
       end
-       if array
-        return array[0].calories
-          else return "not today's date"
-       end
-        
-    
+      #  if array
+        return array[0]
+          # else return "not today's date"
+      #  end
      end
 
     #  def calories_per_day(day_number)
@@ -83,7 +84,7 @@ class User < ApplicationRecord
       logs =  self.daily_logs.select  do |log|
             log.food_entries.length != 0
         end
-        logs.length/30.to_f
+        logs.length/self.daily_logs.length.to_f
     end
 end
 
