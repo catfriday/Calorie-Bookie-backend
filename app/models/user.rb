@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
 
-    has_many :daily_logs
+    has_many :daily_logs, dependent: :destroy
     has_many :food_entries, through: :daily_logs 
     has_many :bets
 
