@@ -22,7 +22,7 @@ class User < ApplicationRecord
        array = self.daily_logs.map do |log|
            if log.date == Date.today
             return log.calories 
-           else "no log for today's date"
+           else "No calories logged for today's date"
            end
       end
       #  if array
@@ -88,6 +88,15 @@ class User < ApplicationRecord
     end
 end
 
-# it = logs.select do |log|
-#         log.daily_goal_reached != 'no'
-#        end
+
+# end_date = Date.today - 30
+# now = Date.today
+# dates = (end_date...now).to_a
+# i = 0
+# dates.each {|date| DailyLog.create(user_id: rih.id, date: date, day_number: "day #{i += 1}")}
+# rih.daily_logs.each do |log|
+#   FoodEntry.create(daily_log_id: log.id, food_item_id: 11)
+# end
+
+#  to show forfiet, you have to make one daily log
+#  remember to update users calories when you create one in console
