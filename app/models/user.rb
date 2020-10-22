@@ -22,7 +22,8 @@ class User < ApplicationRecord
        array = self.daily_logs.map do |log|
            if log.date == Date.today
             return log.calories 
-           else "No calories logged for today's date"
+          #  else "No calories logged for today's date"
+        else "0 Days left, please check your bet dash"
            end
       end
       #  if array
