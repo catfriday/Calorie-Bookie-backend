@@ -101,3 +101,4 @@ end
 
 #  to show forfiet, you have to make one daily log
 #  remember to update users calories when you create one in console
+#  added a new user for demo 11/02
