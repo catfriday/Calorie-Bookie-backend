@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
     has_many :daily_logs, dependent: :destroy
     has_many :food_entries, through: :daily_logs 
-    has_many :bets
+    has_many :bets, dependent: :destroy
 
     validates :email, presence: true, uniqueness: { case_sensitive: false }
     validates :name, presence: true
@@ -99,6 +99,3 @@ end
 #   FoodEntry.create(daily_log_id: log.id, food_item_id: 11)
 # end
 
-#  to show forfiet, you have to make one daily log
-#  remember to update users calories when you create one in console
-#  added a new user for demo 11/02

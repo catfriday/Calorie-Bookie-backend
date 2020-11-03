@@ -33,8 +33,8 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
+    
     user = User.find_by(id: params[:id])
-    #  byebug
     user.update(user_params)
     render json: user, except: [:created_at, :updated_at], include: [:daily_logs =>{except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}]}]
 end
