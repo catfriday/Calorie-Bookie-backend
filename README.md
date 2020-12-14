@@ -22,7 +22,7 @@ Libraries, Frameworks and Resources used:
 
 Video demo link: https://www.youtube.com/embed/W42rfrnpGR8
 
-Project backend: https://github.com/catfriday/Calorie-Bookie-backend
+Project frontend: https://github.com/catfriday/Calorie-Bookie-Frontend
 
 ## Installation Instructions
 
