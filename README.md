@@ -1,24 +1,42 @@
-# README
+# Calorie Bookie
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Calorie Bookie is a web application where a user can log their daily calorie intake and bet against the calorie bookie on whether or not they reach their goal for 30 days. A user will create an account and then set a bet. The bet will be placed by putting in the amount of weight per week they would like to lose (1-2 lbs), then they will be given thier daily calorie intake limit (1200-1300 cal). Once the daily calorie goal is set, a user will bet a minimum of $100 and start a 30 day log. At the end of the 30 days, the user will win if they have completed at least 90% of their 30 day log entries and have reached their daily goal of at least 90% during the 30 days. If the user wins, they get to keep the amount they bet. If the user loses, the calorie bookie keeps the money.
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+<p align="center">
+  <img width="300" height="300" src="https://github.com/catfriday/Calorie-Bookie-Frontend/blob/master/src/Calorie%20Bookie%20Logo%20transparent.png">
+</p>
 
-* Database creation
 
-* Database initialization
+Libraries, Frameworks and Resources used: 
 
-* How to run the test suite
+* React
+* React-Router-Dom
+* Nutritionix API
+* Hooks
+* Rails
+* Postgresql database
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+Video demo link: https://www.youtube.com/embed/W42rfrnpGR8
 
-* ...
+Project backend: https://github.com/catfriday/Calorie-Bookie-backend
+
+## Installation Instructions
+
+1. Fork the front and back end repositories and run `git clone <repository link here>`.
+2. Run `bundle install` on the backend repository to install the required gems. 
+3. Must have PostgreSQL installed. 
+4. Run `rails db:create` then `rails db:migrate` to create database and migrate schema. 
+5. Run `rails s` to start up the backend server. 
+6. Run `npm install` on frontend repository to install all libraries and dependencies. 
+7. Run `npm start` to run the server. 
+
+
+## Contact
+
+Feel free to contact me for any inquiries at cat.friday@gmail.com
+
+
