@@ -24,6 +24,9 @@ Video demo link: https://www.youtube.com/embed/W42rfrnpGR8
 
 Project frontend: https://github.com/catfriday/Calorie-Bookie-Frontend
 
+Projet Pitch Link: https://docs.google.com/document/d/1sN1gLaOUM2eV0V7B_ukO-zumTGm3aGxwjFsBl6-UpSE/edit?usp=sharing
+Wireframe/Models/Component Tree Link: https://drive.google.com/file/d/1h6jEFXyTFO_TIDmMK2ING6iOyOKKiuB1/view?usp=sharing
+
 ## Installation Instructions
 
 1. Fork the front and back end repositories and run `git clone <repository link here>`.
