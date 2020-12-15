@@ -43,5 +43,5 @@ Wireframe/Models/Component Tree Link: https://drive.google.com/file/d/1h6jEFXyTF
 
 Email: cat.friday@gmail.com
 
-Website: catrinafriday.com
+Website: https://catfriday.github.io/web-bio
 
