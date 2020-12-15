@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
     validates :email, presence: true, uniqueness: { case_sensitive: false }
     validates :name, presence: true
-    # validates :weight, allow_blank: true
+   
     
 
     # def per_day(date)
@@ -26,10 +26,7 @@ class User < ApplicationRecord
         else "0 Days left, please check your bet dash"
            end
       end
-      #  if array
         return array[0]
-          # else return "not today's date"
-      #  end
      end
 
     #  def calories_per_day(day_number)
@@ -64,14 +61,7 @@ class User < ApplicationRecord
        goal= calories
     end
 
-    # def progress
-    #   entries = self.daily_logs.select do |log|
-    #         log.daily_goal_reached == 'no'
-    #     end
-
-    # end
-
-    def logged
+    def logged # user monthly progress percentage 
      logs = self.daily_logs.select do |log|
             log.daily_goal_reached != 'no entry'
         end 
@@ -90,6 +80,8 @@ class User < ApplicationRecord
 end
 
 
+# CODE TO CREATE USER WHO HAS ALREADY LOGGED 30 DAYS AND HAS WON OR LOST FOR DEMO PURPOSES
+# ENTER INTO RAILS CONSOLE 
 # end_date = Date.today - 30
 # now = Date.today
 # dates = (end_date...now).to_a
@@ -99,6 +91,6 @@ end
 #   FoodEntry.create(daily_log_id: log.id, food_item_id: 11)
 # end
 
-#  to show forfiet, you have to make one daily log
+#  To show forfiet, you have to make one daily log
 #  remember to update users calories when you create one in console
 #  added a new user for demo 11/02

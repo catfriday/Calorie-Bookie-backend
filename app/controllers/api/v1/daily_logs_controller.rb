@@ -15,14 +15,10 @@ class Api::V1::DailyLogsController < ApplicationController
     def create_thirty 
         user = User.find_by(id: params[:id])
         user.thirty
-        # daily_log = DailyLog.find_or_create_by(daily_log_params)
-        # daily_log.save
         render json: user.daily_logs, except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories, :daily_goal_reached]
     end
 
     def create 
-        # user = User.find_by(id: params[:id])
-        # user.thirty
         daily_log = DailyLog.find_by(daily_log_params)
         daily_log.save
         render json: user.daily_logs, except: [:created_at, :updated_at], include: [:food_items => {except: [:created_at, :updated_at]}], methods: [:calories, :daily_goal_reached]
@@ -35,7 +31,6 @@ class Api::V1::DailyLogsController < ApplicationController
     end
 
     def enter_food
-        # user = User.find_by(id: params[:user_id])
        daily_log = DailyLog.find_by(id: params[:id])
        daily_log.food_items << FoodItem.find_or_create_by(category: params[:category], food_name: params[:food_name], calories: params[:calories], serving_qty: params[:serving_qty], serving_unit: params[:serving_unit])
        render json: daily_log, except: [:created_at, :updated_at], include: [:food_items] , methods: [:calories, :daily_goal_reached]

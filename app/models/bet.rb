@@ -15,10 +15,6 @@ class Bet < ApplicationRecord
     end
    end
 
-   def reserve
-    self.amount * 0.20
-   end
-
    def days_left
         user = User.find_by(id: self.user_id)
         last_date = user.daily_logs.last.date

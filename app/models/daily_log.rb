@@ -13,9 +13,6 @@ class DailyLog < ApplicationRecord
         total.sum
     end
 
-    
-
-
     def daily_goal_reached
         user = self.user 
         if self.calories == 0
@@ -39,5 +36,5 @@ end
 
 # start_date = Date.parse('date start')
 # end_date = Date.parse('date end')
-# (start..endd).to_a
+# (start..end).to_a
 # Date.today() + 30
